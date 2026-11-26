@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Form Validation</title>
+    <style>
+      .error {
+        color: #c0392b;
+        font-size: 13px;
+      }
+      input {
+        display: block;
+        margin: 5px 0;
+        padding: 6px;
+        width: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Registration Form with Validation</h2>
+    <form name="regForm" onsubmit="return validateForm();">
+      <input type="text" name="uname" placeholder="Username" />
+      <input type="email" name="email" placeholder="Email" />
+      <input type="password" name="pwd" placeholder="Password" />
+      <input type="password" name="cpwd" placeholder="Confirm Password" />
+      <input type="submit" value="Register" />
+    </form>
+    <p id="msg" class="error"></p>
+
+    <script>
+      function validateForm() {
+        let f = document.forms["regForm"];
+        let u = f["uname"].value.trim();
+        let e = f["email"].value.trim();
+        let p = f["pwd"].value;
+        let c = f["cpwd"].value;
+        let msg = "";
+
+        if (u === "") {
+          msg = "Username is required.";
+        } else if (e.indexOf("@") === -1 || e.indexOf(".") === -1) {
+          msg = "Please enter a valid email address.";
+        } else if (p.length < 6) {
+          msg = "Password must be at least 6 characters.";
+        } else if (p !== c) {
+          msg = "Passwords do not match.";
+        }
+
+        if (msg !== "") {
+          document.getElementById("msg").innerHTML = msg;
+          return false; // stop submission
+        }
+        alert("Form submitted successfully!");
+        return true;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Functions</title>
+  </head>
+  <body>
+    <h2>JavaScript Functions</h2>
+    <div id="out"></div>
+
+    <script>
+      // Function declaration
+      function add(a, b) {
+        return a + b;
+      }
+
+      // Function expression
+      const square = function (n) {
+        return n * n;
+      };
+
+      // Arrow function
+      const greet = (name) => "Hello, " + name + "!";
+
+      let msg = "add(5, 3) = " + add(5, 3) + "<br>";
+      msg += "square(6) = " + square(6) + "<br>";
+      msg += greet("Arjun");
+
+      document.getElementById("out").innerHTML = msg;
+    </script>
+  </body>
+</html>
